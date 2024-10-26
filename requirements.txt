@@ -2,3 +2,4 @@ pytest
 selenium
 webdriver-manager
 autopep8
+Faker
