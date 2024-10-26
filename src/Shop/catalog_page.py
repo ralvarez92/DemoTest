@@ -23,7 +23,7 @@ class CatalogPage:
         self.__wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, self.__car_option)))
         return self.driver.find_element(By.CSS_SELECTOR, self.__car_option)
     
-    def choose_items_add_to_car(self):
+    def add_to_car_bike_ligth_and_onesie(self):
         self.get_btn_bike_ligth_add_to_car().click()
         self.get_btn_onesie_add_to_car().click()
     

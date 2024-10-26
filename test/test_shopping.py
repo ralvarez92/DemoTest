@@ -4,12 +4,12 @@ from src.Login.login_page import LoginPage
 from src.Factories.checkout_information import CheckoutInformation
 
 @pytest.mark.usefixtures("init_driver")
-class TestLogin:
+class TestShopping:
 
     def test_buy_two_items(self):
         catalog_page = LoginPage(self.driver).login(os.getenv("USERNAME"),
                                                     os.getenv("PASSWORD"))
-        catalog_page.choose_items_add_to_car()
+        catalog_page.add_to_car_bike_ligth_and_onesie()
         checkout = catalog_page.view_car()
         check_steps = checkout.do_checkout()
         information_shopper = CheckoutInformation().information_shopper()
