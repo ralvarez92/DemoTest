@@ -9,3 +9,4 @@ class CheckoutInformation:
         return CheckoutInformationDTO(first_name= self.fake.first_name(),
                                       last_name= self.fake.first_name(),
                                       postal_code= self.fake.zipcode())
+    

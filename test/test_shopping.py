@@ -7,7 +7,6 @@ from src.Factories.checkout_information import CheckoutInformation
 class TestLogin:
 
     def test_buy_two_items(self):
-        #Login
         catalog_page = LoginPage(self.driver).login(os.getenv("USERNAME"),
                                                     os.getenv("PASSWORD"))
         catalog_page.choose_items_add_to_car()
