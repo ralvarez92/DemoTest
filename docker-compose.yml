@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  selenium:
+    image: selenium/standalone-chrome:latest
+    container_name: chrome_selenium
+    depends_on:
+        - app
+    ports:
+        - '${NO_VNC_PORT}:7900'
+    environment:
+        - VNC_NO_PASSWORD=1
+        - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+        - SE_NODE_MAX_SESSIONS=5
+        - SE_SCREEN_WIDTH=2560
+        - SE_SCREEN_HEIGHT=1440
+    restart: always
+    shm_size: 2gb
+    networks:
+      - sauce-demo-ecommerce
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /var/www/app
+    container_name: test-sauce-demo-ecommerce
+    restart: unless-stopped
+    tty: true
+    env_file: 
+     - .env
+    volumes:
+     - ./:/var/www/app
+    networks: 
+      - sauce-demo-ecommerce
+
+networks:
+  sauce-demo-ecommerce:
+    driver: bridge
